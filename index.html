@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>  Cosmetic Surgery | Home </title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1> Curves & Contours Clinic</h1> 
+        <!--creating home/about/procedures/contact buttons-->
+        <nav>
+            <button class="nav-btn" data-page="home">Home</button>
+            <button class="nav-btn" data-page="about">About</button>
+            <button class="nav-btn" data-page="procedures">Procedures</button>
+            <button class="nav-btn" data-page="contact">Contact</button>
+        </nav>
+    </header>
+
+    <!--Dynamic content (from JS)loads here -->
+    <main id="app">
+        <div id="hero">
+            <h2>Transform Your Confidence</h2>
+            <p>Expert cosmetic surgery with personalized care</p>
+            <button id="bookConsultBtn" class="cta-button">Book Free Consultation</button>
+            </div>
+            <div id="reviews-section">
+                <h3>Patient Reviews</h3>
+                <div id="reviews-container">Loading reviews...</div>
+                <button id="refreshReviews">Refresh Reviews</button>
+            </div>
+            <div id="counter-demo">
+                <h3>Consultation Interest</h3>
+                <p>Interested patients today: <span id="interestCount">0</span> </p>
+                <button id="increaseInterest">I am Interested</button>
+                <button id="resetInterest">Reset</button>
+            </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Curves and Contours</p>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/contact.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+</html>
