@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Patient Education | Curves & Contours Cosmetic Clinic</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <header>
+            <nav class="navbar">
+                <div class="container">
+                    <div class="logo">
+                        <h1>Curves & Contours Cosmetic Clinic</h1>
+                        <p>Excellence in Aesthetic Medicine</p>
+                    </div>
+                    <ul class="nav-links">
+                        <li><a href="index.html">Home</a></li>
+                         <li><a href="education.html" class="active">Patient Education</a></li>
+                         <li><a href="dashboard.html">Staff Portal</a></li>
+                         <li><a href="index.html#booking">Book Consultation</a></li>
+                    </ul>
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <section class="page-hero">
+                <div class="container">
+                    <h1>Patient Education Center</h1>
+                    <p>Your comprehensive guide to cosmetic surgery procedures</p>
+                </div>
+            </section>
+
+            <section class="faq-section">
+                <div class="container">
+                    <h2 class="section-title">Frequently Asked Questions</h2>
+                    <p class="section-subtitle">Everything you need to know before your procedure</p>
+                    <div id="faq-accordion" class="faq-accodion"></div>
+                </div>
+            </section>
+
+            <section class="recovery tips">
+                <div class="container">
+                    <h2 class="section-title">Recovery Tips and Guidlines</h2>
+                    <p class="section-subtitle">Essential information for optimal healing</p>
+                    <div id="recovery-tips" class="recovery-grid"></div>
+                </div>
+            </section>
+ <section class="recovery-tips">
+            <div class="container">
+                <h2 class="section-title">Recovery Tips & Guidelines</h2>
+                <p class="section-subtitle">Essential information for optimal healing</p>
+                <div id="recovery-tips" class="recovery-grid"></div>
+            </div>
+        </section>
+
+        <section class="inquiry-form">
+            <div class="container">
+                <h2 class="section-title">General Inquiry</h2>
+                <p class="section-subtitle">Have questions? We're here to help</p>
+                <form id="inquiry-form" class="booking-form">
+                    <div class="form-group">
+                        <label for="inq-name">Full Name *</label>
+                        <input type="text" id="inq-name" required>
+                        <span class="error-message" id="inq-name-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="inq-email">Email Address *</label>
+                        <input type="email" id="inq-email" required>
+                        <span class="error-message" id="inq-email-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="inq-message">Your Question/Message *</label>
+                        <textarea id="inq-message" rows="5" required></textarea>
+                        <span class="error-message" id="inq-message-error"></span>
+                    </div>
+                    <button type="submit" class="btn-primary">Send Inquiry</button>
+                    <div id="inq-form-message" class="form-message"></div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i>Elite Cosmetic Surgery</i></h3>
+                    <p>Excellence in aesthetic medicine since 2010</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>📞 (555) 123-4567</p>
+                    <p>✉️ info@elitecosmeticsurgery.com</p>
+                    <p>📍 123 Medical Plaza, Beverly Hills, CA</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Elite Cosmetic Surgery. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/utils.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/education.js"></script>
+</body>
+</html>
