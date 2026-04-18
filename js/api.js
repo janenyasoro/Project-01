@@ -1,11 +1,11 @@
-//API and LocalStorage data management
+// API and localStorage data management
 
-export async function fetchProcedures(){
+export async function fetchProcedures() {
     return new Promise((resolve) => {
-        const procedures = JSON.parse(localStorage.getItem("procedures")|| "[]");
-        if (procedures.length === 0){
+        const procedures = JSON.parse(localStorage.getItem('procedures') || '[]');
+        if (procedures.length === 0) {
             const defaultProcedures = [
-                {id: 1, name:"Rhinoplasty", description: "Nose reshaping surgery for improved facial harmony", recoveryTime: "2-3 weeks", imageUrl:"https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400', price: '$8,000 - $12,000"},
+                { id: 1, name: 'Rhinoplasty', description: 'Nose reshaping surgery for improved facial harmony', recoveryTime: '2-3 weeks', imageUrl: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400', price: '$8,000 - $12,000' },
                 { id: 2, name: 'Facelift', description: 'Restore youthful facial contours and reduce sagging', recoveryTime: '3-4 weeks', imageUrl: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400', price: '$12,000 - $18,000' },
                 { id: 3, name: 'Liposuction', description: 'Remove stubborn fat deposits from multiple areas', recoveryTime: '1-2 weeks', imageUrl: 'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=400', price: '$4,000 - $8,000' },
                 { id: 4, name: 'Breast Augmentation', description: 'Enhance breast size and shape with implants', recoveryTime: '4-6 weeks', imageUrl: 'https://images.unsplash.com/photo-1578496479531-32e296d5c6e1?w=400', price: '$6,000 - $10,000' }
