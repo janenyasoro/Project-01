@@ -3,75 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>  Curves & Contours Cosmetic Clinic| Transform Your Confidence</title>
+    <title>Elite Cosmetic Surgery | Transform Your Confidence</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+    /* Quick image resize fix */
+    .gallery-grid img,
+    .procedure-grid img,
+    .doctor-grid img {
+        width: 100% !important;
+        height: 250px !important;
+        object-fit: cover !important;
+        display: block !important;
+    }
+    
+    .gallery-grid,
+    .procedure-grid,
+    .doctor-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+</style>
 </head>
 <body>
     <header>
         <nav class="navbar">
-        <div class="container">
-            <div class="logo">
-                <h1>Curves & Contours Cosmetic Clinic</h1>
-                <p>Expert Cosmetic Surgery & Aesthetic Medicine</p>
+            <div class="container">
+                <div class="logo">
+                    <h1><i>Elite Cosmetic Surgery</i></h1>
+                    <p>Excellence in Aesthetic Medicine</p>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="education.html">Patient Education</a></li>
+                    <li><a href="dashboard.html">Staff Portal</a></li>
+                    <li><a href="#booking" id="booking-nav">Book Consultation</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
-            <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="education.html">Patient Education</a></li>
-                <li><a href="dashboard.html">Staff Portal</a></li>
-                <li><a href="#booking" id="booking-nav">Book Consultation</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
         </nav>
     </header>
 
     <main>
         <section class="hero">
-          <div class="hero-overlay"></div> 
-          <div class="container">
-            <div class="hero-content">
-                <h1>Tranform Your Confidence</h1>
-                <p> World-class cosmetic surgery with personalized care and natural-looking results</p>
-                <!--<a href="#booking" class="btn-primary" id="hero-cta">Book Free Consultation</a> -->
-            </div>
-          </div>
-        </section>
-
-        <section class="procedures">
+            <div class="hero-overlay"></div>
             <div class="container">
-                <h2 class="section-title">Our Signature Procedures</h2>
-                <p class="section-subtitle">Advanced surgical techniques for beautiful, natural results</p>
-                <div id="procedure-grid" class="procedure-grid"></div>
+                <div class="hero-content">
+                    <h1>Transform Your Confidence</h1>
+                    <p>World-class cosmetic surgery with personalized care and natural-looking results</p>
+                    <a href="#booking" class="btn-primary" id="hero-cta">Book Free Consultation →</a>
+                </div>
             </div>
         </section>
 
-        <section class="doctors">
+        <section id="doctors" class="doctors">
             <div class="container">
                 <h2 class="section-title">Meet Your Surgical Team</h2>
                 <p class="section-subtitle">Board-certified surgeons with decades of combined experience</p>
                 <div id="doctor-grid" class="doctor-grid"></div>
             </div>
-        </section>
-
-        <section class="testimonials">
-            <div class="container">
-                <h2 class="section-title">Patient Stories</h2>
-                <p class="section-subtitle">Real experiences from our satisfied patients</p>
-                <div id="testimonial-grid" class="testimonial-grid"></div>
-            </div>
-        </section>
+        </section>/
 
         <section class="gallery">
             <div class="container">
-                <h2 class="section-title">Before & After Gallery</h2>
-                <p class="section-subtitle">See the transformative results our patients have achieved</p>
-                <div id="gallery-grid" class="gallery-grid"></div>
-            </div>
-        </section>
+                <h2 class="section-title">Our Signature Procedures</h2>
+                <p class="section-subtitle">Click on any result to see more details in our Education Center</p>
+                <div class="gallery-grid">
+                    <a href="education.html" class="gallery-link">
+                        <div class="gallery-item">
+                            <img src="images/AfterRhinoplasty.png" alt="Rhinoplasty Result">
+                            <div class="gallery-overlay">
+                                <p>Rhinoplasty</p>
+                                <small>Before → After</small>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="education.html" class="gallery-link">
+                <div class="gallery-item">
+                    <img src="images/AfterFacelift.png" alt="Facelift Result">
+                    <div class="gallery-overlay">
+                        <p>Facelift</p>
+                        <small>Before → After</small>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="education.html" class="gallery-link">
+                <div class="gallery-item">
+                    <img src="images/AfterLipo.jpg" alt="Liposuction Result">
+                    <div class="gallery-overlay">
+                        <p>Liposuction</p>
+                        <small>Before → After</small>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="education.html" class="gallery-link">
+                <div class="gallery-item">
+                    <img src="images/AfterAug.jpg" alt="Breast Augmentation Result">
+                    <div class="gallery-overlay">
+                        <p>Breast Augmentation</p>
+                        <small>Before → After</small>
+                    </div>
+                </div>
+            </a>
+        </div>
+        
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="education.html" class="btn-primary">View Full Gallery →</a>
+        </div>
+    </div>
+</section>
 
         <section id="booking" class="booking">
             <div class="container">
@@ -116,13 +163,13 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3><i>Curves & Contours Cosmetic Clinic</i></h3>
+                    <h3><i>Elite Cosmetic Surgery</i></h3>
                     <p>Excellence in aesthetic medicine since 2010</p>
                 </div>
                 <div class="footer-section">
                     <h4>Contact</h4>
-                    <p>📞 (254) 712-529-567</p>
-                    <p>✉️ info@curves&contoursclinic.com</p>
+                    <p>📞 (254) 123-4567</p>
+                    <p>✉️ info@elitecosmeticsurgery.com</p>
                     <p>📍 123 Medical Plaza, Kilimani, KE</p>
                 </div>
                 <div class="footer-section">
@@ -133,12 +180,11 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Curves & Contours Cosmetic Clinic. All rights reserved.</p>
+                <p>&copy; 2026 Elite Cosmetic Surgery. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Chat Widget -->
     <div id="chat-widget" class="chat-widget">
         <div class="chat-header" id="chat-header">
             <span>💬 Live Chat</span>
@@ -155,11 +201,10 @@
         </div>
     </div>
 
-    <script src="js/utils.js"></script>
-    <script src="js/api.js"></script>
-    <script src="js/chat.js"></script>
-    <script src="js/home.js"></script>
+    <script type="module" src="js/utils.js"></script>
+    <script type="module" src="js/api.js"></script>
+    <script type="module" src="js/chat.js"></script>
+    <script type="module" src="js/home.js"></script>
 </body>
 </html>
-            
         

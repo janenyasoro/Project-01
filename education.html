@@ -1,58 +1,321 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Patient Education | Curves & Contours Cosmetic Clinic</title>
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body>
-        <header>
-            <nav class="navbar">
-                <div class="container">
-                    <div class="logo">
-                        <h1>Curves & Contours Cosmetic Clinic</h1>
-                        <p>Excellence in Aesthetic Medicine</p>
-                    </div>
-                    <ul class="nav-links">
-                        <li><a href="index.html">Home</a></li>
-                         <li><a href="education.html" class="active">Patient Education</a></li>
-                         <li><a href="dashboard.html">Staff Portal</a></li>
-                         <li><a href="index.html#booking">Book Consultation</a></li>
-                    </ul>
-                    <div class="hamburger">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Education | Elite Cosmetic Surgery</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Additional Education Page Specific Styles */
+        .procedure-showcase {
+            padding: 4rem 0;
+            background: #fefae0;
+        }
+        
+        .procedure-detail-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-top: 2rem;
+        }
+        
+        .procedure-detail-header {
+            background: linear-gradient(135deg, #1a2a4f 0%, #2a3a5f 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .procedure-detail-header h3 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .procedure-detail-body {
+            padding: 2rem;
+        }
+        
+        .procedure-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .info-card {
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #d4af7a;
+        }
+        
+        .info-card h4 {
+            color: #1a2a4f;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .procedure-image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .procedure-image-gallery img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .procedure-image-gallery img:hover {
+            transform: scale(1.05);
+        }
+        
+        .procedure-selector {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .procedure-selector select {
+            padding: 12px 24px;
+            font-size: 1rem;
+            border: 2px solid #d4af7a;
+            border-radius: 30px;
+            background: white;
+            width: 100%;
+            max-width: 400px;
+            cursor: pointer;
+        }
+        
+        .gallery-showcase {
+            padding: 4rem 0;
+            background: white;
+        }
+        
+        .before-after-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .before-after-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .before-after-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .before-after-images {
+            display: flex;
+            position: relative;
+        }
+        
+        .before-image, .after-image {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .before-image img, .after-image img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .image-label {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .before-after-content {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .before-after-content h3 {
+            color: #1a2a4f;
+            margin-bottom: 0.5rem;
+        }
+        
+        .view-details-btn {
+            background: #d4af7a;
+            color: #1a2a4f;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background 0.3s;
+        }
+        
+        .view-details-btn:hover {
+            background: #c49a5c;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            cursor: pointer;
+        }
+        
+        .modal img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+        }
+        
+        .procedure-comparison {
+            padding: 4rem 0;
+            background: #f9f9f9;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .comparison-table th {
+            background: #1a2a4f;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+        }
+        
+        .comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .comparison-table tr:hover {
+            background: #f5f5f5;
+        }
+        
+        @media (max-width: 768px) {
+            .before-after-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .comparison-table {
+                font-size: 0.8rem;
+            }
+            
+            .procedure-info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><i>Elite Cosmetic Surgery</i></h1>
+                    <p>Excellence in Aesthetic Medicine</p>
                 </div>
-            </nav>
-        </header>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="education.html" class="active">Patient Education</a></li>
+                    <li><a href="dashboard.html">Staff Portal</a></li>
+                    <li><a href="index.html#booking" id="booking-nav">Book Consultation</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-        <main>
-            <section class="page-hero">
-                <div class="container">
-                    <h1>Patient Education Center</h1>
-                    <p>Your comprehensive guide to cosmetic surgery procedures</p>
-                </div>
-            </section>
+    <main>
+        <!-- Hero Section -->
+        <section class="page-hero">
+            <div class="container">
+                <h1>Patient Education Center</h1>
+                <p>Your comprehensive guide to cosmetic surgery procedures</p>
+            </div>
+        </section>
 
-            <section class="faq-section">
-                <div class="container">
-                    <h2 class="section-title">Frequently Asked Questions</h2>
-                    <p class="section-subtitle">Everything you need to know before your procedure</p>
-                    <div id="faq-accordion" class="faq-accodion"></div>
+        <!-- Procedure Selector & Detailed Information -->
+        <section class="procedure-showcase">
+            <div class="container">
+                <h2 class="section-title">Explore Our Procedures</h2>
+                <p class="section-subtitle">Select a procedure to learn detailed information</p>
+                
+                <div class="procedure-selector">
+                    <select id="procedure-selector">
+                        <option value="">-- Choose a Procedure --</option>
+                        <option value="rhinoplasty">Rhinoplasty (Nose Surgery)</option>
+                        <option value="facelift">Facelift (Rhytidectomy)</option>
+                        <option value="liposuction">Liposuction</option>
+                        <option value="breast-augmentation">Breast Augmentation</option>
+                        <option value="tummy-tuck">Tummy Tuck (Abdominoplasty)</option>
+                        <option value="mommy-makeover">Mommy Makeover</option>
+                        <option value="brazilian-butt-lift">Brazilian Butt Lift (BBL)</option>
+                        <option value="botox">Botox & Fillers</option>
+                    </select>
                 </div>
-            </section>
+                
+                <div id="procedure-detail-container">
+                    <!-- Dynamic content will be inserted here -->
+                </div>
+            </div>
+        </section>
 
-            <section class="recovery tips">
-                <div class="container">
-                    <h2 class="section-title">Recovery Tips and Guidlines</h2>
-                    <p class="section-subtitle">Essential information for optimal healing</p>
-                    <div id="recovery-tips" class="recovery-grid"></div>
+        <!-- Before & After Gallery Section -->
+        <section class="gallery-showcase">
+            <div class="container">
+                <h2 class="section-title">Before & After Gallery</h2>
+                <p class="section-subtitle">Real results from our satisfied patients</p>
+                <div id="before-after-gallery" class="before-after-grid">
+                    <!-- Dynamic gallery content -->
                 </div>
-            </section>
- <section class="recovery-tips">
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="container">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Everything you need to know before your procedure</p>
+                <div id="faq-accordion" class="faq-accordion"></div>
+            </div>
+        </section>
+
+        <!-- Recovery Tips Section -->
+        <section class="recovery-tips">
             <div class="container">
                 <h2 class="section-title">Recovery Tips & Guidelines</h2>
                 <p class="section-subtitle">Essential information for optimal healing</p>
@@ -60,10 +323,40 @@
             </div>
         </section>
 
+        <!-- Procedure Comparison Section -->
+        <section class="procedure-comparison">
+            <div class="container">
+                <h2 class="section-title">Procedure Comparison Guide</h2>
+                <p class="section-subtitle">Compare recovery times, costs, and results</p>
+                <table class="comparison-table" id="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Procedure</th>
+                            <th>Recovery Time</th>
+                            <th>Average Cost</th>
+                            <th>Anesthesia</th>
+                            <th>Results Duration</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Rhinoplasty</td><td>2-3 weeks</td><td>$8,000-$12,000</td><td>General</td><td>Permanent</td></tr>
+                        <tr><td>Facelift</td><td>3-4 weeks</td><td>$12,000-$18,000</td><td>General</td><td>10-15 years</td></tr>
+                        <tr><td>Liposuction</td><td>1-2 weeks</td><td>$4,000-$8,000</td><td>Local/General</td><td>Permanent with diet</td></tr>
+                        <tr><td>Breast Augmentation</td><td>4-6 weeks</td><td>$6,000-$10,000</td><td>General</td><td>10-20 years</td></tr>
+                        <tr><td>Tummy Tuck</td><td>4-6 weeks</td><td>$9,000-$15,000</td><td>General</td><td>Permanent</td></tr>
+                        <tr><td>Mommy Makeover</td><td>6-8 weeks</td><td>$15,000-$25,000</td><td>General</td><td>Permanent</td></tr>
+                        <tr><td>BBL</td><td>2-3 weeks</td><td>$8,000-$12,000</td><td>General</td><td>Long-term</td></tr>
+                        <tr><td>Botox & Fillers</td><td>No downtime</td><td>$500-$2,000</td><td>None</td><td>3-18 months</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Inquiry Form -->
         <section class="inquiry-form">
             <div class="container">
-                <h2 class="section-title">General Inquiry</h2>
-                <p class="section-subtitle">Have questions? We're here to help</p>
+                <h2 class="section-title">Still Have Questions?</h2>
+                <p class="section-subtitle">Our patient care team is here to help</p>
                 <form id="inquiry-form" class="booking-form">
                     <div class="form-group">
                         <label for="inq-name">Full Name *</label>
@@ -76,8 +369,26 @@
                         <span class="error-message" id="inq-email-error"></span>
                     </div>
                     <div class="form-group">
+                        <label for="inq-phone">Phone Number</label>
+                        <input type="tel" id="inq-phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="inq-procedure">Procedure Interested In</label>
+                        <select id="inq-procedure">
+                            <option value="">Select a procedure (optional)</option>
+                            <option value="Rhinoplasty">Rhinoplasty (Nose Surgery)</option>
+                            <option value="Facelift">Facelift</option>
+                            <option value="Liposuction">Liposuction</option>
+                            <option value="Breast Augmentation">Breast Augmentation</option>
+                            <option value="Tummy Tuck">Tummy Tuck</option>
+                            <option value="Mommy Makeover">Mommy Makeover</option>
+                            <option value="BBL">Brazilian Butt Lift (BBL)</option>
+                            <option value="Botox">Botox & Fillers</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="inq-message">Your Question/Message *</label>
-                        <textarea id="inq-message" rows="5" required></textarea>
+                        <textarea id="inq-message" rows="5" required placeholder="Please provide details about your question or concern..."></textarea>
                         <span class="error-message" id="inq-message-error"></span>
                     </div>
                     <button type="submit" class="btn-primary">Send Inquiry</button>
@@ -96,9 +407,15 @@
                 </div>
                 <div class="footer-section">
                     <h4>Contact</h4>
-                    <p>📞 (555) 123-4567</p>
+                    <p>📞 (254) 123-4567</p>
                     <p>✉️ info@elitecosmeticsurgery.com</p>
-                    <p>📍 123 Medical Plaza, Beverly Hills, CA</p>
+                    <p>📍 123 Medical Plaza, Kilimani, KE</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <p><a href="index.html#procedures">Procedures</a></p>
+                    <p><a href="index.html#doctors">Our Team</a></p>
+                    <p><a href="index.html#booking">Book Consultation</a></p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -107,8 +424,547 @@
         </div>
     </footer>
 
-    <script src="js/utils.js"></script>
-    <script src="js/api.js"></script>
-    <script src="js/education.js"></script>
+    <!-- Modal for image popup -->
+    <div id="image-modal" class="modal">
+        <img id="modal-image" src="" alt="Enlarged view">
+    </div>
+
+    <script>
+        // Detailed procedure data with images
+        const procedureDetails = {
+            rhinoplasty: {
+                title: "Rhinoplasty (Nose Surgery)",
+                overview: "Rhinoplasty is a surgical procedure that reshapes the nose to improve its appearance and/or function. It can address concerns about nose size, shape, profile, or breathing difficulties.",
+                benefits: [
+                    "Improved facial harmony and balance",
+                    "Enhanced self-confidence",
+                    "Corrected breathing problems",
+                    "Permanent results"
+                ],
+                process: "The surgery typically takes 1-3 hours. Incisions are made inside the nostrils or across the columella. The bone and cartilage are then reshaped to achieve the desired appearance.",
+                recovery: "Initial recovery takes 1-2 weeks. You'll wear a nasal splint for the first week. Swelling gradually subsides over several months, with final results visible after 1 year.",
+                risks: "Possible risks include bleeding, infection, breathing difficulties, scarring, and the need for revision surgery.",
+                images: [
+                    "images/beforeRhinoplasty.png",
+                    "images/AfterRhinoplasty.png"
+                ]
+            },
+            facelift: {
+                title: "Facelift (Rhytidectomy)",
+                overview: "A facelift is a surgical procedure that reduces visible signs of aging by tightening underlying muscles and removing excess skin, creating a more youthful appearance.",
+                benefits: [
+                    "Reduced sagging in the midface",
+                    "Tighter jawline definition",
+                    "Smoother neck contour",
+                    "Natural-looking rejuvenation"
+                ],
+                process: "The procedure takes 2-4 hours. Incisions are made along the hairline and around the ears. The skin is lifted, muscles are tightened, and excess skin is removed.",
+                recovery: "Recovery takes 2-4 weeks. Swelling and bruising typically subside within 2-3 weeks. Most patients return to normal activities after 4 weeks.",
+                risks: "Potential risks include scarring, nerve injury, hair loss at incision sites, and asymmetry.",
+                images: [
+                    "images/BeforeFacelift.png",
+                    "images/AfterFacelift.png"
+                ]
+            },
+            liposuction: {
+                title: "Liposuction",
+                overview: "Liposuction removes stubborn fat deposits from specific areas of the body to improve contours and proportions.",
+                benefits: [
+                    "Improved body contours",
+                    "Removal of stubborn fat deposits",
+                    "Enhanced silhouette",
+                    "Boosted self-confidence"
+                ],
+                process: "The procedure takes 1-3 hours. A small cannula is inserted through tiny incisions to suction out fat cells from targeted areas.",
+                recovery: "Recovery takes 1-2 weeks. Wear compression garments for 4-6 weeks. Return to work within 1-2 weeks, and resume exercise at 4-6 weeks.",
+                risks: "Risks include contour irregularities, fluid accumulation, numbness, infection, and scarring.",
+                images: [
+                    "images/BeforeLipo.jpg",
+                    "images/AfterLipo.jpg"
+                ]
+            },
+            "breast-augmentation": {
+                title: "Breast Augmentation",
+                overview: "Breast augmentation uses implants or fat transfer to increase breast size, improve shape, or restore volume lost after pregnancy or weight loss.",
+                benefits: [
+                    "Enhanced breast size and shape",
+                    "Improved symmetry",
+                    "Restored volume after pregnancy",
+                    "Increased self-confidence"
+                ],
+                process: "The procedure takes 1-2 hours. Implants are placed through incisions under the breast, around the areola, or in the armpit.",
+                recovery: "Recovery takes 4-6 weeks. Wear a surgical bra for support. Return to work in 1-2 weeks, and resume strenuous activity at 4-6 weeks.",
+                risks: "Potential risks include capsular contracture, implant rupture, changes in nipple sensation, and the need for future surgeries.",
+                images: [
+                    "images/BeforeAug.jpg",
+                    "himages/AfterAug.jpg"
+                ]
+            },
+            "tummy-tuck": {
+                title: "Tummy Tuck (Abdominoplasty)",
+                overview: "A tummy tuck removes excess skin and fat while tightening abdominal muscles to create a flatter, firmer midsection.",
+                benefits: [
+                    "Flatter abdominal contour",
+                    "Tightened abdominal muscles",
+                    "Removed excess skin",
+                    "Improved posture"
+                ],
+                process: "The procedure takes 2-4 hours. An incision is made from hip to hip. The skin is lifted, muscles are tightened, and excess skin is removed.",
+                recovery: "Recovery takes 4-6 weeks. Walk slightly bent for the first week. Return to work in 2-3 weeks, and resume exercise at 6-8 weeks.",
+                risks: "Risks include scarring, fluid accumulation, numbness, poor wound healing, and blood clots.",
+                images: [
+                    "images/BeforeTummy.jpg",
+                    "images/AfterTummy.jpg"
+                ]
+            },
+            "mommy-makeover": {
+                title: "Mommy Makeover",
+                overview: "A mommy makeover is a combination of procedures designed to restore a woman's body after pregnancy and breastfeeding. Typically includes breast augmentation/lift and tummy tuck.",
+                benefits: [
+                    "Restored pre-pregnancy body",
+                    "Combined procedures = single recovery",
+                    "Enhanced breasts and abdomen",
+                    "Improved self-image"
+                ],
+                process: "The procedure takes 4-6 hours combining breast surgery and abdominal contouring in one operation.",
+                recovery: "Recovery takes 6-8 weeks. Combination procedures require longer recovery. Most return to normal activities at 6-8 weeks.",
+                risks: "Risks include those of individual procedures plus potential for longer anesthesia time.",
+                images: [
+                    "images/BeforeMummy.jpg",
+                    "images/AfterMummy.jpg"
+                ]
+            },
+            "brazilian-butt-lift": {
+                title: "Brazilian Butt Lift (BBL)",
+                overview: "A Brazilian Butt Lift uses liposuction to harvest fat from other areas of your body and injects it into your buttocks for enhanced shape and volume.",
+                benefits: [
+                    "Natural enhancement using your own fat",
+                    "Improved body proportions",
+                    "Enhanced buttock shape and volume",
+                    "Dual benefit of liposuction"
+                ],
+                process: "The procedure takes 2-4 hours. Fat is harvested via liposuction, purified, and then injected into the buttocks.",
+                recovery: "Recovery takes 2-3 weeks. You cannot sit directly on your buttocks for 2-3 weeks. Use a special pillow when sitting.",
+                risks: "Risks include fat necrosis, asymmetry, infection, and rare but serious fat embolism.",
+                images: [
+                    "images/BeforeBBL.webp",
+                    "images/AfterBBL.png"
+                ]
+            },
+            botox: {
+                title: "Botox & Fillers",
+                overview: "Non-surgical injectable treatments that reduce wrinkles, restore facial volume, and enhance facial features.",
+                benefits: [
+                    "No downtime",
+                    "Immediate or quick results",
+                    "Natural-looking enhancement",
+                    "Reversible options available"
+                ],
+                process: "The procedure takes 15-30 minutes. Small amounts of product are injected into targeted areas with fine needles.",
+                recovery: "No downtime. You can return to normal activities immediately. Avoid strenuous exercise for 24 hours.",
+                risks: "Minor risks include bruising, swelling, redness at injection sites, and rarely asymmetry or vascular complications.",
+                images: [
+                    "images/BeforeBotox.jpg",
+                    "images/AfterBotox.jpg"
+                ]
+            }
+        };
+
+        // Before & After Gallery Data
+        const beforeAfterData = [
+            {
+                procedure: "Rhinoplasty",
+                beforeImage: "images/beforeRhinoplasty.png",
+                afterImage: "images/AfterRhinoplasty.png",
+                description: "Dramatic profile improvement with natural-looking results",
+                patientAge: 28,
+                monthsPostOp: 8
+            },
+            {
+                procedure: "Facelift",
+                beforeImage: "images/BeforeFacelift.png",
+                afterImage: "images/AfterFacelift.png",
+                description: "Restored youthful contours with refreshed appearance",
+                patientAge: 55,
+                monthsPostOp: 12
+            },
+            {
+                procedure: "Liposuction",
+                beforeImage: "images/BeforeLipo.jpg",
+                afterImage: "images/AfterLipo.jpg",
+                description: "Enhanced body contours with improved silhouette",
+                patientAge: 35,
+                monthsPostOp: 6
+            },
+            {
+                procedure: "Breast Augmentation",
+                beforeImage: "images/BeforeAug.jpg",
+                afterImage: "images/AfterAug.jpg",
+                description: "Natural enhancement with improved symmetry",
+                patientAge: 32,
+                monthsPostOp: 10
+            },
+            {
+                procedure: "Tummy Tuck",
+                beforeImage: "images/BeforeTummy.jpg",
+                afterImage:  "images/AfterTummy.jpg",
+                description: "Flatter, firmer abdominal contour",
+                patientAge: 42,
+                monthsPostOp: 9
+            },
+            {
+                procedure: "Mommy Makeover",
+                beforeImage: "images/BeforeMummy.jpg",
+                afterImage: "images/AfterMummy.jpg",
+                description: "Complete post-pregnancy body restoration",
+                patientAge: 34,
+                monthsPostOp: 14
+            },
+            {
+                procedure: "Brazillian Butt Lift",
+                beforeImage: "images/BeforeBBL.webp",
+                afterImage: "images/AfterBBL.png",
+                description: "Complete fat transfer & body restoration",
+                patientAge: 28,
+                monthsPostOp: 12
+            },
+            {
+                procedure: "Botox and Fillers",
+                beforeImage: "images/BeforeBotox.jpg",
+                afterImage: "images/AfterBotox.jpg",
+                description: "Reduce wrinkles, restore facial volume, and enhance facial features.",
+                patientAge: 44,
+                monthsPostOp: 5
+            }
+        ];
+
+        // FAQ Data
+        const faqData = [
+            {
+                question: "How long is the recovery period?",
+                answer: "Recovery time varies significantly by procedure. Non-surgical treatments like Botox have no downtime, while surgical procedures can require 1-6 weeks of recovery. Rhinoplasty: 2-3 weeks, Facelift: 3-4 weeks, Liposuction: 1-2 weeks, Breast Augmentation: 4-6 weeks, Tummy Tuck: 4-6 weeks. We provide detailed recovery instructions for each procedure."
+            },
+            {
+                question: "Am I a good candidate for cosmetic surgery?",
+                answer: "Good candidates are generally in good overall health, have realistic expectations, are non-smokers or willing to quit, and have specific concerns that surgery can address. During your 45-minute consultation, our surgeons will evaluate your medical history, discuss your goals, and determine if you're a suitable candidate for your desired procedure."
+            },
+            {
+                question: "What are the risks and complications?",
+                answer: "As with any surgery, cosmetic procedures carry risks including infection, bleeding, scarring, anesthesia complications, and unsatisfactory results. However, choosing a board-certified surgeon and following pre/post-operative instructions significantly reduces these risks. During your consultation, we'll thoroughly discuss all potential risks specific to your procedure."
+            },
+            {
+                question: "How much does cosmetic surgery cost?",
+                answer: "Costs vary based on the procedure, surgeon's experience, facility fees, anesthesia, and geographic location. Range estimates: Rhinoplasty ($8,000-$12,000), Facelift ($12,000-$18,000), Liposuction ($4,000-$8,000), Breast Augmentation ($6,000-$10,000), Tummy Tuck ($9,000-$15,000), Mommy Makeover ($15,000-$25,000). We offer financing options through CareCredit and PatientFi."
+            },
+            {
+                question: "Will there be visible scarring?",
+                answer: "All surgical procedures create some scarring, but our surgeons use advanced techniques to minimize visibility. Incisions are placed in natural creases or hidden areas. Scars typically fade significantly over 12-18 months. We also provide scar management protocols including silicone sheets and topical treatments to optimize healing."
+            },
+            {
+                question: "When will I see final results?",
+                answer: "Initial results are visible once swelling subsides (2-4 weeks), but final results can take 6-12 months as tissues settle and scars mature. Some procedures like rhinoplasty may take up to a year for the final shape to emerge. We schedule follow-up appointments to monitor your progress throughout the healing process."
+            },
+            {
+                question: "Do you offer financing options?",
+                answer: "Yes! We partner with CareCredit and PatientFi to offer flexible payment plans. Many patients qualify for 6-24 month financing with low or no interest. During your consultation, our patient coordinator can provide detailed information about financing options and help you complete the application process."
+            },
+            {
+                question: "How do I prepare for surgery?",
+                answer: "Preparation includes: stopping certain medications (aspirin, ibuprofen, blood thinners) 2 weeks prior, quitting smoking 4-6 weeks before, arranging for post-op help, filling prescriptions in advance, preparing your recovery area, stocking up on easy-to-prepare foods, and following specific fasting instructions before surgery."
+            }
+        ];
+
+        // Recovery Tips Data
+        const recoveryTipsData = [
+            {
+                title: "Follow Post-Op Instructions",
+                tips: "Carefully follow all medication schedules and activity restrictions provided by your surgeon. This is crucial for optimal healing and preventing complications.",
+                icon: "📋"
+            },
+            {
+                title: "Stay Hydrated",
+                tips: "Drink plenty of water to aid healing and reduce swelling. Proper hydration helps flush out anesthesia and medications from your system.",
+                icon: "💧"
+            },
+            {
+                title: "Proper Nutrition",
+                tips: "Eat protein-rich foods to support tissue repair and recovery. Include vitamins A and C to promote wound healing.",
+                icon: "🥗"
+            },
+            {
+                title: "Rest & Sleep",
+                tips: "Elevate surgical areas while sleeping to minimize swelling. Get adequate rest but also move around gently to prevent blood clots.",
+                icon: "😴"
+            },
+            {
+                title: "Compression Garments",
+                tips: "Wear compression garments as directed to reduce swelling and support healing tissues. This is especially important for body contouring procedures.",
+                icon: "👕"
+            },
+            {
+                title: "Avoid Smoking & Alcohol",
+                tips: "Smoking and alcohol can significantly impair healing and increase complication risks. Avoid for at least 4-6 weeks post-surgery.",
+                icon: "🚭"
+            }
+        ];
+
+        // Populate procedure details based on selection
+        function setupProcedureSelector() {
+            const selector = document.getElementById('procedure-selector');
+            const container = document.getElementById('procedure-detail-container');
+            
+            selector.addEventListener('change', () => {
+                const procedureKey = selector.value;
+                if (!procedureKey) {
+                    container.innerHTML = '<div class="procedure-detail-card"><div class="procedure-detail-body" style="text-align:center; padding:3rem;"><p>👆 Please select a procedure from the dropdown above to see detailed information including benefits, process, recovery, risks, and images.</p></div></div>';
+                    return;
+                }
+                
+                const proc = procedureDetails[procedureKey];
+                if (proc) {
+                    container.innerHTML = `
+                        <div class="procedure-detail-card">
+                            <div class="procedure-detail-header">
+                                <h3>${proc.title}</h3>
+                                <p>What you need to know</p>
+                            </div>
+                            <div class="procedure-detail-body">
+                                <p style="font-size:1.1rem; line-height:1.6;">${proc.overview}</p>
+                                
+                                <div class="procedure-info-grid">
+                                    <div class="info-card">
+                                        <h4>✨ Benefits</h4>
+                                        <ul style="margin-left:1rem;">
+                                            ${proc.benefits.map(b => `<li>${b}</li>`).join('')}
+                                        </ul>
+                                    </div>
+                                    <div class="info-card">
+                                        <h4>🔬 The Procedure</h4>
+                                        <p>${proc.process}</p>
+                                    </div>
+                                    <div class="info-card">
+                                        <h4>⏱️ Recovery Timeline</h4>
+                                        <p>${proc.recovery}</p>
+                                    </div>
+                                    <div class="info-card">
+                                        <h4>⚠️ Potential Risks</h4>
+                                        <p>${proc.risks}</p>
+                                    </div>
+                                </div>
+                                
+                                <h4 style="color:#1a2a4f; margin:1.5rem 0 1rem;">Procedure Gallery</h4>
+                                <div class="procedure-image-gallery">
+                                    ${proc.images.map(img => `<img src="${img}" alt="${proc.title}" onclick="openModal(this.src)">`).join('')}
+                                </div>
+                                
+                                <div style="text-align: center; margin-top: 2rem;">
+                                    <button class="btn-primary" onclick="window.location.href='index.html#booking'">Book Consultation →</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+        }
+
+        // Populate Before & After Gallery
+        function populateBeforeAfterGallery() {
+            const container = document.getElementById('before-after-gallery');
+            if (!container) return;
+            
+            container.innerHTML = beforeAfterData.map(item => `
+                <div class="before-after-card">
+                    <div class="before-after-images">
+                        <div class="before-image">
+                            <img src="${item.beforeImage}" alt="${item.procedure} - Before">
+                            <span class="image-label">BEFORE</span>
+                        </div>
+                        <div class="after-image">
+                            <img src="${item.afterImage}" alt="${item.procedure} - After">
+                            <span class="image-label">AFTER</span>
+                        </div>
+                    </div>
+                    <div class="before-after-content">
+                        <h3>${item.procedure}</h3>
+                        <p>${item.description}</p>
+                        <p><small>Patient age: ${item.patientAge} | ${item.monthsPostOp} months post-op</small></p>
+                        <button class="view-details-btn" onclick="window.location.href='index.html#booking'">Request Similar Results →</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Populate FAQs
+        function populateFAQs() {
+            const container = document.getElementById('faq-accordion');
+            if (!container) return;
+            
+            container.innerHTML = faqData.map((faq, index) => `
+                <div class="faq-item">
+                    <div class="faq-question" data-index="${index}">
+                        <span>${faq.question}</span>
+                        <span class="icon">+</span>
+                    </div>
+                    <div class="faq-answer" id="faq-answer-${index}">
+                        <p>${faq.answer}</p>
+                    </div>
+                </div>
+            `).join('');
+            
+            document.querySelectorAll('.faq-question').forEach(question => {
+                question.addEventListener('click', () => {
+                    const index = question.dataset.index;
+                    const answer = document.getElementById(`faq-answer-${index}`);
+                    const icon = question.querySelector('.icon');
+                    
+                    answer.classList.toggle('active');
+                    icon.textContent = answer.classList.contains('active') ? '−' : '+';
+                });
+            });
+        }
+
+        // Populate Recovery Tips
+        function populateRecoveryTips() {
+            const container = document.getElementById('recovery-tips');
+            if (!container) return;
+            
+            container.innerHTML = recoveryTipsData.map(tip => `
+                <div class="recovery-card">
+                    <div style="font-size: 2rem; text-align: center; margin-bottom: 0.5rem;">${tip.icon}</div>
+                    <h3 style="text-align: center;">${tip.title}</h3>
+                    <p style="text-align: center; margin-top: 0.5rem;">${tip.tips}</p>
+                </div>
+            `).join('');
+        }
+
+        // Modal functions for image popup
+        function openModal(src) {
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-image');
+            modal.style.display = 'block';
+            modalImg.src = src;
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('image-modal');
+            modal.style.display = 'none';
+        }
+        
+        // Mobile menu handler
+        function initMobileMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            if (hamburger && navLinks) {
+                hamburger.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                });
+            }
+        }
+        
+        // Inquiry Form Handler
+        function initInquiryForm() {
+            const form = document.getElementById('inquiry-form');
+            if (!form) return;
+            
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const name = document.getElementById('inq-name').value.trim();
+                const email = document.getElementById('inq-email').value.trim();
+                const message = document.getElementById('inq-message').value.trim();
+                
+                let isValid = true;
+                
+                if (!name || name.length < 2) {
+                    document.getElementById('inq-name-error').textContent = 'Please enter your full name';
+                    isValid = false;
+                } else {
+                    document.getElementById('inq-name-error').textContent = '';
+                }
+                
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!email || !emailRegex.test(email)) {
+                    document.getElementById('inq-email-error').textContent = 'Please enter a valid email address';
+                    isValid = false;
+                } else {
+                    document.getElementById('inq-email-error').textContent = '';
+                }
+                
+                if (!message || message.length < 10) {
+                    document.getElementById('inq-message-error').textContent = 'Please enter your question (minimum 10 characters)';
+                    isValid = false;
+                } else {
+                    document.getElementById('inq-message-error').textContent = '';
+                }
+                
+                if (isValid) {
+                    const inquiry = {
+                        id: Date.now(),
+                        name: name,
+                        email: email,
+                        phone: document.getElementById('inq-phone').value,
+                        procedure: document.getElementById('inq-procedure').value,
+                        message: message,
+                        timestamp: new Date().toISOString()
+                    };
+                    
+                    const inquiries = JSON.parse(localStorage.getItem('inquiries') || '[]');
+                    inquiries.push(inquiry);
+                    localStorage.setItem('inquiries', JSON.stringify(inquiries));
+                    
+                    const messageDiv = document.getElementById('inq-form-message');
+                    messageDiv.className = 'form-message success';
+                    messageDiv.textContent = 'Thank you for your inquiry! Our patient care team will respond within 24 hours.';
+                    messageDiv.style.display = 'block';
+                    
+                    form.reset();
+                    
+                    setTimeout(() => {
+                        messageDiv.style.display = 'none';
+                    }, 5000);
+                }
+            });
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            initMobileMenu();
+            setupProcedureSelector();
+            populateBeforeAfterGallery();
+            populateFAQs();
+            populateRecoveryTips();
+            initInquiryForm();
+            
+            // Modal close on click
+            const modal = document.getElementById('image-modal');
+            if (modal) {
+                modal.addEventListener('click', closeModal);
+            }
+            
+            // Smooth scrolling for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+            
+            // Booking nav link
+            const bookingNav = document.getElementById('booking-nav');
+            if (bookingNav) {
+                bookingNav.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.location.href = 'index.html#booking';
+                });
+            }
+        });
+        
+        // Make functions global for onclick handlers
+        window.openModal = openModal;
+        window.closeModal = closeModal;
+    </script>
 </body>
 </html>

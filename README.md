@@ -1,4 +1,75 @@
 # Project-01
+
+# Elite Cosmetic Surgery Website
+
+A fully responsive, comprehensive website for a cosmetic surgery practice with patient education, appointment booking, live chat, and password-protected staff dashboards.
+
+## Features
+
+### Public Features
+- View surgical procedures with images, descriptions, and recovery times
+- Read patient testimonials and doctor credentials
+- View before/after gallery
+- Access FAQ accordion and recovery tips
+- Submit appointment booking form
+- Submit general inquiries
+- Live chatbox for instant questions
+
+### Doctor Features (Password: doctor123)
+- View assigned appointment requests
+- Mark appointments as confirmed or completed
+- Respond to patient inquiries
+- View patient chat messages
+
+### Admin Features (Password: admin123)
+- View all appointment requests
+- Update appointment status
+- Delete appointments
+- Edit procedure details
+- Add or remove procedures
+- View all inquiries and chat messages
+- Export appointment data to CSV
+
+## Tech Stack
+- HTML5
+- CSS3 (Vanilla CSS)
+- JavaScript (ES6+)
+- LocalStorage for data persistence
+- GitHub Actions for deployment
+- Public API (JSONPlaceholder)
+
+## Setup Instructions
+
+1. Clone the repository:
+```bash
+git clone https://github.com/janenyasoro/Project-01.git
+cd Project-01
+Open index.html in your browser or use a local server:
+
+bash
+python -m http.server 8000
+Access the staff portal at dashboard.html
+
+Doctor login: doctor123
+
+Admin login: admin123
+
+Color Scheme
+Navy Blue: #1a2a4f
+
+Rose Gold: #d4af7a
+
+White: #ffffff
+
+Font Families
+Georgia (serif) - Headings
+
+Arial (sans-serif) - Body text
+
+Segoe UI (sans-serif) - Buttons and forms
+
+
+
 Cosmetic Surgery Practice Website
 
 Problem Statement
